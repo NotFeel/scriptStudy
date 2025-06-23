@@ -37,7 +37,7 @@ echo "end install nginx"
 echo "start install admin"
 
 %file_path%\nssm\win64\nssm.exe install "Ruhlasmart Admin" %file_path%\java\jdk\bin\java
-%file_path%\nssm\win64\nssm.exe set "Ruhlasmart Admin" AppParameters  -jar "-Xms1024M" "-Xmx2048M" "-XX:MetaspaceSize=256m" "-XX:MaxMetaspaceSize=512m" "-XX:+HeapDumpOnOutOfMemoryError" "-XX:HeapDumpPath=%file_path%\admin\hprof\dump_%t_%p.hprof" "-XX:OnOutOfMemoryError=cmd /c taskkill /pid %p /t /f" "%file_path%\admin\minions-admin.jar" "--spring.config.location=%file_path%\admin\application.yml"
+%file_path%\nssm\win64\nssm.exe set "Ruhlasmart Admin" AppParameters  -jar "-Xms1024M" "-Xmx2048M" "-Dfile.encoding=UTF-8" "-Duser.timezone=Asia/Shanghai" "-XX:MetaspaceSize=256m" "-XX:MaxMetaspaceSize=512m" "-XX:+HeapDumpOnOutOfMemoryError" "-XX:HeapDumpPath=%file_path%\admin\hprof\dump_%t_%p.hprof" "-XX:OnOutOfMemoryError=cmd /c taskkill /pid %p /t /f" "%file_path%\admin\minions-admin.jar" "--spring.config.location=%file_path%\admin\application.yml"
 %file_path%\nssm\win64\nssm.exe set "Ruhlasmart Admin" AppDirectory %file_path%\admin
 %file_path%\nssm\win64\nssm.exe set "Ruhlasmart Admin" AppStderr %file_path%\admin\daemon\error.log
 
